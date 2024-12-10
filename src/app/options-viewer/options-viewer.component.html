@@ -11,10 +11,20 @@
     }
     @else{
         <ng-container class="modify">
-            sbvbi
-            zsbdjvbi4
-            zsdjvbv
-            sbidfvbji
+            <select (change)="onOptionChange($event)">
+                <option> Select from dropdown</option>
+                @for(val of optionsList; track val.id) {
+                    <option [value]="val.id" #selectedoption >{{val.name}}</option>
+                }
+            </select>
+            <br>
+            <hr/>
+            <label id="name">Option name:</label>
+            <input type="text" id="selected-option-name" name="selected-option-name" [value]="selectedOptionName"><br><br>
+            <label id="name">Pick Colour:</label>
+            <input type="color" id="seleced-favcolor" name="selected-favcolor" [value]="selectedOptionColour"><br><br>
+            <button (click) = "update()">UPDATE</button>
+
         </ng-container>
     }
 </div>
