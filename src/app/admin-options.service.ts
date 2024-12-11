@@ -19,4 +19,9 @@ export class AdminOptionsService {
   addOption(name : string, colour : string): Observable<number> {
     return this.http.post<number>(this.apiURL, {name, colour});
   }
+
+  updateOption(option: OptionModel): Observable<number> { 
+    let url = this.apiURL + "/" + option.id;
+    return this.http.put<number>(url, {name: option.name, colour: option.colour});
+  }
 }

@@ -1,16 +1,20 @@
-<!--<div class="container">
-  <app-options class="box"></app-options>
-  <div class="divider"></div>
-  <app-options-viewer class="box"></app-options-viewer>
-</div>-->
-<div class="main-container">
-  <div class="sidenav">
-    <app-options></app-options>
-  </div>
-  <div class="viewport">
-    <app-viewer></app-viewer>
-  </div>
+<div style="text-align: center;">
+  @if(user) {
+    <div class="main-container">
+      <div class="sidenav">
+        <app-options></app-options>
+      </div>
+      <div class="viewport">
+        <app-viewer></app-viewer>
+      </div>
+    </div>
+  }
+  @else {
+    <button (click)="loginWithGoogle()">Login with Google</button>
+  }
 </div>
+
+
 
 
 

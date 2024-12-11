@@ -3,6 +3,7 @@ import {
   ElementRef,
   Input,
   OnInit,
+  viewChild,
   ViewChild
 } from '@angular/core';
 import {
@@ -33,6 +34,14 @@ nameInput: ElementRef = new ElementRef(null);
 
 @ViewChild('colour')
 colourInput: ElementRef = new ElementRef(null);
+
+@ViewChild('selectedOptionNameElem')
+selectedOptionNameElem: ElementRef = new ElementRef(null);
+
+@ViewChild('selectedOptionColourElem')
+selectedOptionColourElem: ElementRef = new ElementRef(null);
+
+
 
   constructor(private route: ActivatedRoute, 
               private adminOptionsService: AdminOptionsService, 
@@ -65,7 +74,18 @@ colourInput: ElementRef = new ElementRef(null);
   }
 
   update() {
-    
+    let optionName: string = this.selectedOptionNameElem.nativeElement.value;
+    let optionColour: string = this.selectedOptionColourElem.nativeElement.value;
+    this.adminOptionsService.updateOption({id: this.selectedOptionId, name: optionName, colour: optionColour}).subscribe(data => {
+      console.log(data);
+      this.toastr.success('Option updated successfully')
+      this.optionsList = this.optionsList.map(option => {
+        if(option.id === this.selectedOptionId){
+          return {id: this.selectedOptionId, name: optionName, colour: optionColour};
+        }
+        return option;
+      });
+    });
   }
 
   onOptionChange(e: any){

@@ -20,9 +20,9 @@
             <br>
             <hr/>
             <label id="name">Option name:</label>
-            <input type="text" id="selected-option-name" name="selected-option-name" [value]="selectedOptionName"><br><br>
+            <input type="text" id="selected-option-name" name="selected-option-name" [value]="selectedOptionName" #selectedOptionNameElem><br><br>
             <label id="name">Pick Colour:</label>
-            <input type="color" id="seleced-favcolor" name="selected-favcolor" [value]="selectedOptionColour"><br><br>
+            <input type="color" id="seleced-favcolor" name="selected-favcolor" [value]="selectedOptionColour" #selectedOptionColourElem><br><br>
             <button (click) = "update()">UPDATE</button>
 
         </ng-container>

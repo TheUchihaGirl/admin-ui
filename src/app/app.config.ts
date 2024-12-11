@@ -6,6 +6,11 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 
+
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { firebaseConfig } from '../firebase-config';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -15,5 +20,8 @@ export const appConfig: ApplicationConfig = {
     provideToastr({
       timeOut: 10000,
       positionClass: 'toast-bottom-center',
-    }),]
+    }),
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideAuth(() => getAuth())
+  ]
 };
