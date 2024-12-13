@@ -1,1 +1,15 @@
-<p>nav-pane works!</p>
+<div class="menu-item">
+    <div class="menu-header" (click)="toggle()">
+      Options
+    </div>
+    <div class="submenu" [hidden]="isCollapsed">
+      <div class="submenu-item" (click)="create()">
+        Create
+      </div>
+      <div class="submenu-item" (click)="modify()">
+        Modify
+      </div>
+    </div>
+  </div>
+  
+  
